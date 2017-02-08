@@ -104,8 +104,12 @@ function findError(data1, data2) {
  - какой-либо из аргументов div является нулем (с текстом "division by 0")
  */
 function calculator(number) {
-    if (!Number.isFinite(number)) {
+    if (!isNumber(number)) {
         throw new Error("number is not a number");
+    }
+
+    function isNumber(number) {
+        return !isNaN(parseFloat(number)) && isFinite(number);
     }
     return {
         sum: function () {
